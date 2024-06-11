@@ -239,8 +239,10 @@ if __name__ == '__main__':
     config = gpt2_config.GPT2Config()
     # GPT2LMHeadModel
     gpt2_model = GPT2LMHeadModel(config)
+    # low:1, high:128, shape:(2,100)
     token = torch.randint(1, 128, (2, 100))
     logits, presents = gpt2_model(token)
+    # shape:[2, 100, 1024]
     print(logits.shape)
 
 
