@@ -19,3 +19,5 @@
 * [第16章 开源大模型ChatGLM使用详解](docs/chapter16.md)
 * [第17章 开源大模型ChatGLM高级定制化应用实战](docs/chapter17.md)
 * [第18章 对训练成本上亿美元的ChatGLM进行高级微调](docs/chapter18.md)
+
+连接huggingface方法请参考如下网址：https://aliendao.cn/
