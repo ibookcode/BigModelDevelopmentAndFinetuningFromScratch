@@ -105,7 +105,7 @@ class MLP(nn.Module):
         h2 = self.c_proj(h)
         return h2
 
-# 1.GPT-2模型的Block类
+# 1.GPT-2模型的Block类，包括Attention类和Feedford类
 class Block(nn.Module):
     def __init__(self, n_ctx, config, scale=False):
         super(Block, self).__init__()
@@ -122,7 +122,7 @@ class Block(nn.Module):
         x = x + m
         return x, present
 
-# 2.GPT-2模型的Model类
+# 2.GPT-2模型的Model类，其作用是将Block组合到一起
 class GPT2Model(nn.Module):
     def __init__(self, config):
         super(GPT2Model, self).__init__()
@@ -190,6 +190,7 @@ class GPT2LMHead(nn.Module):
         lm_logits = self.decoder(hidden_state)
         return lm_logits
 
+# GPT2LMHeadModel类用于进行自回归预训练
 class GPT2LMHeadModel(nn.Module):
     def __init__(self, config):
         super(GPT2LMHeadModel, self).__init__()

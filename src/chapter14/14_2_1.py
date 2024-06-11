@@ -20,7 +20,6 @@ context = torch.tensor([generated])
 past_key_values = None
 
 for i in range(30):
-
     '''
     此时模型model返回的output为CausalLMOutputWithPastAndCrossAttentions类,
     模型返回的logits以及past_key_values对象为其中的属性,
@@ -32,7 +31,7 @@ for i in range(30):
             attentions=transformer_outputs.attentions,
             cross_attentions=transformer_outputs.cross_attentions,
         )
-'''
+    '''
     output = model(context, past_key_values=past_key_values)
     past_key_values = output.past_key_values
     # 此时获取GPT2模型计算的输出结果hidden_states张量中第二维度最后一个元素的argmax值, 得出的argmax值即为此次GPT2模型迭代
