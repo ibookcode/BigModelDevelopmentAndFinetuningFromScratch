@@ -2,6 +2,12 @@
 
 ## 17.1 医疗问答GLMQABot搭建实战————基于ChatGLM搭建专业客户问答机器人
 
+### 17.1.3 文本相关度（相似度）的比较算法
+
+[_17_11.py](../src/chapter17/_17_11.py)
+
+### 17.1.5 基于单个文档的GLMQABot的搭建
+
 [_17_1.py](../src/chapter17/_17_1.py)
 
 [utils.py](../src/chapter17/utils.py)
