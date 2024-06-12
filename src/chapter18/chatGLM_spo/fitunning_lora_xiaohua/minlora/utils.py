@@ -1,4 +1,4 @@
-from 第十八章_本章需要连接huggingface.chatGLM_spo.fitunning_lora_xiaohua.minlora.model import LoRAParametrization
+from chapter18.chatGLM_spo.fitunning_lora_xiaohua.minlora.model import LoRAParametrization
 from torch import nn
 
 def apply_to_lora(fn):

@@ -29,3 +29,19 @@
 ### 18.2.3 更快的速度————使用INT8(INT4)量化模型加速训练
 
 [quantization.py](../src/chapter18/chatGLM_spo/huggingface_saver/quantization.py)
+
+## 18.3 高级微调方法2————基于LoRA的模型微调
+
+### 18.3.2 自定义LoRA的使用方法
+
+[model.py](../src/chapter18/chatGLM_spo/fitunning_lora_xiaohua/minlora/model.py)
+
+### 18.3.3 基于自定义LoRA的模型训练
+
+[demo.py](../src/chapter18/chatGLM_spo/fitunning_lora_xiaohua/demo.py)
+
+[utils.py](../src/chapter18/chatGLM_spo/fitunning_lora_xiaohua/minlora/utils.py)
+
+### 18.3.4 基于自定义LoRA的模型推断
+
+[pred_demo.py](../src/chapter18/chatGLM_spo/fitunning_lora_xiaohua/pred_demo.py)

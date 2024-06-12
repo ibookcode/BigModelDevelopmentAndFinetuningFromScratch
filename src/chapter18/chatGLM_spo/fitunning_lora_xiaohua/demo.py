@@ -2,7 +2,7 @@ import torch
 
 from transformers import AutoTokenizer
 from torch.utils.data import RandomSampler, DataLoader
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
 from tqdm import tqdm
 config = configuration_chatglm.ChatGLMConfig()
 #这里是设置config中的pre_seq_len  与 prefix_projection ，只有这2个设置好了才行
@@ -10,13 +10,15 @@ config = configuration_chatglm.ChatGLMConfig()
 model = xiaohua_model.XiaohuaModel(model_path="../huggingface_saver/chatglm6b.pth",config=config,strict=False)
 model = model.half().cuda()
 
+# 将所有参数设置为无法求导
 for name,param in model.named_parameters():
     param.requires_grad = False
 
 # 下面就是lora的部分
-from minlora.model import  *
+from minlora.model import *
 from minlora.utils import *
 
+# 对模型中名为query_key_value的部分完成LoRA的注入
 for key,_layer in model.named_modules():
     if "query_key_value" in key:
         add_lora(_layer)
@@ -24,7 +26,7 @@ xiaohua_model.print_trainable_parameters(model)
 
 prompt_text = "按给定的格式抽取文本信息。\n文本:"#"你现在是一个信息抽取模型，请你帮我抽取出关系内容为\"性能故障\", \"部件故障\", \"组成\"和 \"检测工具\"的相关三元组，三元组内部用\"_\"连接，三元组之间用\\n分割。文本："
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
-from 第十八章_本章需要连接huggingface.chatGLM_spo import get_data
+from chapter18.chatGLM_spo import get_data
 all_train_data = get_data.get_train_data("../data/spo_0.json",tokenizer, 32, 48, prompt_text)
 train_dataset = get_data.Seq2SeqDataSet(all_train_data)
 train_loader = DataLoader(train_dataset,  batch_size=2,  drop_last=True,collate_fn=get_data.coll_fn, num_workers=0)
@@ -52,7 +54,9 @@ for epoch in range(96):
         pbar.set_description(
             f"epoch:{epoch + 1}, train_loss:{loss.item():.5f}, lr:{lr_scheduler.get_last_lr()[0] * 1000:.5f}")
 
+# 保存所有的参数
 torch.save(model.state_dict(), "./glm6b_lora_all.pth")
+# 仅保存LoRA更新的参数
 lora_state_dict = get_lora_state_dict(model)
 torch.save(lora_state_dict, "./glm6b_lora_only.pth")
 

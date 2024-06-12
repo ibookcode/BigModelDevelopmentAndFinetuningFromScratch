@@ -14,17 +14,19 @@ import torch
 
 from transformers import AutoTokenizer
 from torch.utils.data import RandomSampler, DataLoader
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
 from tqdm import tqdm
 config = configuration_chatglm.ChatGLMConfig()
 #这里是设置config中的pre_seq_len  与 prefix_projection ，只有这2个设置好了才行
 
+# strict设为False，这是按模型载入的方法非严格地载入模型参数
 model = xiaohua_model.XiaohuaModel(model_path="../huggingface_saver/chatglm6b.pth",config=config,strict=False)
 
 # 下面就是lora的部分
-from minlora.model import  *
+from minlora.model import *
 from minlora.utils import *
 
+# 通过add_lora函数将LoRA参数重新加载到模型中
 for key,_layer in model.named_modules():
     if "query_key_value" in key:
         add_lora(_layer)
@@ -58,7 +60,6 @@ with open("../data/spo_1.json", "r", encoding="utf-8") as fh:
             input_ids = tokenizer.convert_tokens_to_ids(tokens)
             # input_ids = tokenizer.encode("帮我写个快排算法")
 
-
             for _ in range(max_src_len):
                 input_ids_tensor = torch.tensor([input_ids]).to("cuda")
                 logits, _, _ = model.forward(input_ids_tensor)
@@ -75,7 +76,3 @@ with open("../data/spo_1.json", "r", encoding="utf-8") as fh:
             result = tokenizer.decode(input_ids)
             print(result)
             print("---------------------------------")
-
-
-
-
