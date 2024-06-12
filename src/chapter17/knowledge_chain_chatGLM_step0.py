@@ -37,7 +37,7 @@ encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tenso
 with torch.no_grad():
     model_output = model(**encoded_input)
 # Perform pooling. In this case, mean pooling.
-
+# 针对长度不同的文档，通过mean的方式将其压缩成同一大小的Embedding编码
 sentence_embeddings = mean_pooling(model_output, encoded_input['attention_mask'])
 print("Sentence embeddings:")
 print(sentence_embeddings)

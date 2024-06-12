@@ -5,3 +5,7 @@
 [_17_1.py](../src/chapter17/_17_1.py)
 
 [utils.py](../src/chapter17/utils.py)
+
+### 17.2.2 获取专业（范畴内）文档与编码存储
+
+[knowledge_chain_chatGLM_step0.py](../src/chapter17/knowledge_chain_chatGLM_step0.py)
