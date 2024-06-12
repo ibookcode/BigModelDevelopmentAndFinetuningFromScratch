@@ -7,16 +7,17 @@ from peft import get_peft_model, LoraConfig, TaskType, prepare_model_for_int8_tr
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, AutoConfig
 
 device = "cuda"
-from 第十八章_本章需要连接huggingface.chatGLM_spo.fintunning_peft_xiaohua import modeling_chatglm
+from chapter18.chatGLM_spo.fintunning_peft_xiaohua import modeling_chatglm
 model = modeling_chatglm.XiaohuaModel(model_path="../huggingface_saver/chatglm6b.pth")
 
+# 加载PEFT的参数
 peft_config = LoraConfig.from_pretrained("./peft")
 model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
 model = model.half().to(device)  # .to(device)
 
 prompt_text = "按给定的格式抽取文本信息。\n文本:"
-from 第十八章_本章需要连接huggingface.chatGLM_spo import get_data
+from chapter18.chatGLM_spo import get_data
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
 all_train_data = get_data.get_train_data("../data/spo_0.json",tokenizer, 48, 48, prompt_text)
 train_dataset = get_data.Seq2SeqDataSet(all_train_data)

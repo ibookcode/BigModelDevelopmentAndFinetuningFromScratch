@@ -45,3 +45,13 @@
 ### 18.3.4 基于自定义LoRA的模型推断
 
 [pred_demo.py](../src/chapter18/chatGLM_spo/fitunning_lora_xiaohua/pred_demo.py)
+
+## 18.4 高级微调方法3————基于Huggingface的PEFT模型微调
+
+### 18.4.2 PEFT的使用与参数设计
+
+[demo.py](../src/chapter18/chatGLM_spo/fintunning_peft_xiaohua/demo.py)
+
+### 18.4.3 Huggingface专用PEFT的使用
+
+[modeling_chatglm.py](../src/chapter18/chatGLM_spo/fintunning_peft_xiaohua/modeling_chatglm.py)

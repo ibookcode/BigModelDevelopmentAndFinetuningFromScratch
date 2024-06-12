@@ -831,7 +831,9 @@ class ChatGLMForConditionalGeneration(torch.nn.Module):
 
 
 #from minlora import add_lora, apply_to_lora, disable_lora, enable_lora, get_lora_params, merge_lora, name_is_lora, remove_lora, load_multiple_lora, select_lora, get_lora_state_dict,get_parameter_number
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import configuration_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import configuration_chatglm
+
+
 class XiaohuaModel(torch.nn.Module):
     def __init__(self,model_path = "./glm6b_half.pth",grad_model_path = None):
         super().__init__()
@@ -854,7 +856,7 @@ class XiaohuaModel(torch.nn.Module):
     # output_hidden_states = output_hidden_states,
     # return_dict = return_dict,
 
-
+    # 重新适配了新的forward函数，从而完成对PEFT库的加载
     def forward(self,input_ids,position_ids = None,attention_mask = None,
                                                       inputs_embeds = None,labels = None,output_attentions = None,output_hidden_states = None,return_dict = None,**kwargs):
         logits,hidden_states = self.glm_model.forward(input_ids=input_ids, **kwargs)
