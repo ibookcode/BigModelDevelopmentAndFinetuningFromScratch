@@ -4,7 +4,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import torch
 from transformers import AutoTokenizer
 from torch.utils.data import RandomSampler, DataLoader
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import xiaohua_model,configuration_chatglm,modeling_chatglm
 from tqdm import tqdm
 config = configuration_chatglm.ChatGLMConfig()
 config.pre_seq_len = 16
@@ -16,7 +16,7 @@ model = model.half().cuda()
 
 xiaohua_model.print_trainable_parameters(model)
 prompt_text = "按给定的格式抽取文本信息。\n文本:"
-from 第十八章_本章需要连接huggingface.chatGLM_spo import get_data
+from chapter18.chatGLM_spo import get_data
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
 all_train_data = get_data.get_train_data("../data/spo_0.json",tokenizer, 32, 48, prompt_text)
 train_dataset = get_data.Seq2SeqDataSet(all_train_data)

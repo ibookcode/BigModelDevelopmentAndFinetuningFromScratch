@@ -12,7 +12,7 @@ import torch
 
 from transformers import AutoTokenizer
 from torch.utils.data import RandomSampler, DataLoader
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import xiaohua_model, configuration_chatglm, modeling_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import xiaohua_model, configuration_chatglm, modeling_chatglm
 from tqdm import tqdm
 
 config = configuration_chatglm.ChatGLMConfig()
@@ -65,7 +65,3 @@ with open("../data/spo_0.json", "r", encoding="utf-8") as fh:
             result = tokenizer.decode(input_ids)
             print(result)
             print("---------------------------------")
-
-
-
-

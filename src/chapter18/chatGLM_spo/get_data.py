@@ -6,6 +6,7 @@ from torch.utils.data import Dataset
 from transformers import AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
 
+# tokenizer是传入的模型初始化编码器，其tokenize()函数进行参数切分，convert_tokens_to_ids()函数进行参数转换
 def get_train_data(data_path,tokenizer,max_len, max_src_len, prompt_text):
     max_tgt_len = max_len - max_src_len - 3
     all_data = []
