@@ -1,5 +1,3 @@
 .vscode/
 .idea/
 __pycache__/
-sentence_embeddings_np.npy
-AdvertiseGen/
