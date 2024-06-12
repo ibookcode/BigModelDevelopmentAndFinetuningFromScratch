@@ -23,3 +23,11 @@
 [knowledge_chain_chatGLM_step2.py](../src/chapter17/knowledge_chain_chatGLM_step2.py)
 
 [utils.py](../src/chapter17/utils.py)
+
+## 17.3 基于ChatGLM的一些补充内容
+
+### 17.3.2 清华大学推荐的ChatGLM微调方法
+
+[train.sh](../src/chapter17/ptuning/train.sh)
+
+[evaluate.sh](../src/chapter17/ptuning/evaluate.sh)
