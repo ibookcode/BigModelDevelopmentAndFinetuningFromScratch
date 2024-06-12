@@ -10,9 +10,9 @@ def get_top_n_sim_text(query: str, documents: List[str],top_n = 3):
         for char in doc:
             text.append(char)
         tokenized_corpus.append(text)
-
+    # tokenized_corpus是由单个字组成的二维数组
     bm25 = BM25Okapi(tokenized_corpus)
-
+    # tokenized_query都是由单个字组成的一维数组
     tokenized_query = [char for char in query]
     #doc_scores = bm25.get_scores(tokenized_query)  # array([0.        , 0.93729472, 0.        ])
 

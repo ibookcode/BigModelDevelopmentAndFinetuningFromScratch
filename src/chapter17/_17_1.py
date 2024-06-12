@@ -23,7 +23,9 @@ response, _ = model.chat(tokenizer, prompt_text, history=[])
 print(response)
 print("----------------------------------------")
 print("下面是经过文本查询的结果如下所示：")
+# context_list是由context_text字符串组成的list
 sim_results = utils.get_top_n_sim_text(query=prompt_text,documents=context_list)
+# sim_results默认是排名前三的结果
 print(sim_results)
 print("----------------------------------------")
 print("由chatGLM根据文档的结果如下：")
