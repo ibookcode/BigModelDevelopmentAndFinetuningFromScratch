@@ -15,3 +15,11 @@
 ### 17.2.3 查询文本编码的相关性比较与排序
 
 [knowledge_chain_chatGLM_step1.py](../src/chapter17/knowledge_chain_chatGLM_step1.py)
+
+[utils.py](../src/chapter17/utils.py)
+
+### 17.2.4 基于知识链的ChatGLM本地化知识库检索与智能答案生成
+
+[knowledge_chain_chatGLM_step2.py](../src/chapter17/knowledge_chain_chatGLM_step2.py)
+
+[utils.py](../src/chapter17/utils.py)
