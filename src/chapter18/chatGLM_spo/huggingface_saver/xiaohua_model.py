@@ -1,10 +1,11 @@
 import torch
-from 第十八章_本章需要连接huggingface.chatGLM_spo.huggingface_saver import configuration_chatglm,modeling_chatglm
+from chapter18.chatGLM_spo.huggingface_saver import configuration_chatglm,modeling_chatglm
 
 class XiaohuaModel(torch.nn.Module):
     def __init__(self,model_path = "./chatglm6b.pth",config = None,strict = True):
 
         super().__init__()
+        # 这里使用基础的ChatGLMForConditionalGeneration作为主处理模型
         self.glm_model = modeling_chatglm.ChatGLMForConditionalGeneration(config)
         model_dict = torch.load(model_path)
 
