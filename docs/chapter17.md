@@ -6,6 +6,12 @@
 
 [utils.py](../src/chapter17/utils.py)
 
+## 17.2 金融信息抽取实战————基于知识链的ChatGLM本地化知识库检索与智能答案生成
+
 ### 17.2.2 获取专业（范畴内）文档与编码存储
 
 [knowledge_chain_chatGLM_step0.py](../src/chapter17/knowledge_chain_chatGLM_step0.py)
+
+### 17.2.3 查询文本编码的相关性比较与排序
+
+[knowledge_chain_chatGLM_step1.py](../src/chapter17/knowledge_chain_chatGLM_step1.py)
