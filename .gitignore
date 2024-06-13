@@ -4,6 +4,7 @@ __pycache__/
 unet_model.pth
 src/chapter02/img/
 src/chapter02/saver/
+src/chapter14/dataset/
 src/chapter15/dataset/
 src/chapter15/RLHF/checkpoints/
 src/chapter17/dataset/

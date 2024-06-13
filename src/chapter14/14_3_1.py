@@ -1,3 +1,4 @@
+# 1.下载和使用Hugging Face GPT-2模型
 from transformers import BertTokenizer, GPT2LMHeadModel, TextGenerationPipeline
 tokenizer = BertTokenizer.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
 model = GPT2LMHeadModel.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
@@ -6,14 +7,13 @@ result = text_generator("从前有座山", max_length=100, do_sample=True)
 print(result)
 
 
-
+# 2.剖析Hugging Face GPT-2模型
 import torch
 
 #注意GPT2LMHeadModel 与 GPT2Model这2个模型，分别接了后面的输出层与没有接输出层的内容
 from transformers import BertTokenizer, GPT2LMHeadModel, TextGenerationPipeline
 tokenizer = BertTokenizer.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
 model = GPT2LMHeadModel.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
-
 print(model)
 
 import torch
@@ -26,10 +26,13 @@ torch.save(lm_weight,"./dataset/lm_weight.pth")
 
 from transformers import BertTokenizer, GPT2Model, TextGenerationPipeline
 model = GPT2Model.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
+
+
+# 3. 使用Hugging Face GPT-2模型构建自定义的GPT-2模型
 import torch
 from torch.nn.parameter import Parameter
-
 from transformers import BertTokenizer, GPT2Model, TextGenerationPipeline
+
 tokenizer = BertTokenizer.from_pretrained("uer/gpt2-chinese-cluecorpussmall")
 
 class GPT2(torch.nn.Module):
@@ -54,7 +57,3 @@ class GPT2(torch.nn.Module):
         logits = self.lm_head(embedding)
 
         return logits
-
-
-
-
