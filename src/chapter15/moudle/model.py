@@ -16,6 +16,7 @@ class GPT2(torch.nn.Module):
         weight = torch.load("../dataset/lm_weight.pth")
         self.lm_head.weight = Parameter(weight)
 
+        # 这里可以简单地使用一个全连接层来完成此项评分功能
         self.value_layer = torch.nn.Sequential(torch.nn.Linear(768,1),torch.nn.Tanh(),torch.nn.Dropout(0.1))
 
     def forward(self,token_inputs):
